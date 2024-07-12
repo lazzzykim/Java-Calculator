@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class App {
@@ -7,8 +9,8 @@ public class App {
         int num1;
         int num2;
         int result = 0;
-        int[] resultArr = new int[10];
         int index = 0;
+        Queue<Integer> resultArr = new LinkedList<>();
 
 
         while (true) {
@@ -44,25 +46,24 @@ public class App {
 
             System.out.println("결과: " + result);
             // 배열에 저장하는 로직
-            if (index < resultArr.length) {
-                resultArr[index] = result;
-                index++;
-            } else {
-                // 0번 인덱스를 날리고 왼쪽으로 밀어넣는 코드
-                for (int i = 1; i < resultArr.length; i++) {
-                    resultArr[i - 1] = resultArr[i];
-                }
-                // 9번 인덱스에 결과값을 저장해서 제일 마지막에 추가된 결과값이 됨
-                resultArr[resultArr.length - 1] = result;
+            resultArr.add(result);
+
+            System.out.println("가장 먼저 계산된 결과를 삭제하시겠습니까? (remove 입력시 삭제)");
+            scanner.nextLine();
+            String remove = scanner.nextLine();
+            if (remove.equals("remove")) {
+                resultArr.poll();
             }
 
-
-            for (int i = 0; i < index; i++) {
-                System.out.println((i + 1) + "번째 저장된 결과값: " + resultArr[i]);
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String getArr = scanner.nextLine();
+            if (getArr.equals("inquiry")) {
+                for (Integer value : resultArr) {
+                    System.out.println(value);
+                }
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            scanner.nextLine();
             String endCalc = scanner.nextLine();
 
             if (endCalc.equals("exit")) {
