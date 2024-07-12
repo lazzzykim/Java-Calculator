@@ -7,6 +7,8 @@ public class App {
         int num1;
         int num2;
         int result = 0;
+        int[] resultArr = new int[10];
+        int index = 0;
 
 
         while (true) {
@@ -41,6 +43,13 @@ public class App {
             }
 
             System.out.println("결과: " + result);
+            resultArr[index] = result;
+            index++;
+
+            for (int i = 0; i < index; i++) {
+                System.out.println(index + "번째 인덱스에 저장된 결과값: " + resultArr[i]);
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             scanner.nextLine();
             String endCalc = scanner.nextLine();
