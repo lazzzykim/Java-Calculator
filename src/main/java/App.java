@@ -11,6 +11,9 @@ public class App {
         System.out.println("첫번째 숫자 입력");
         firNum = scanner.nextInt();
 
+        System.out.println("사칙연산 기호 입력 (+, -, *, /");
+        char operator = scanner.next().charAt(0);
+
         System.out.println("두번째 숫자 입력");
         secondNum = scanner.nextInt();
     }
