@@ -43,11 +43,22 @@ public class App {
             }
 
             System.out.println("결과: " + result);
-            resultArr[index] = result;
-            index++;
+            // 배열에 저장하는 로직
+            if (index < resultArr.length) {
+                resultArr[index] = result;
+                index++;
+            } else {
+                // 0번 인덱스를 날리고 왼쪽으로 밀어넣는 코드
+                for (int i = 1; i < resultArr.length; i++) {
+                    resultArr[i - 1] = resultArr[i];
+                }
+                // 9번 인덱스에 결과값을 저장해서 제일 마지막에 추가된 결과값이 됨
+                resultArr[resultArr.length - 1] = result;
+            }
+
 
             for (int i = 0; i < index; i++) {
-                System.out.println(index + "번째 인덱스에 저장된 결과값: " + resultArr[i]);
+                System.out.println((i + 1) + "번째 저장된 결과값: " + resultArr[i]);
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
