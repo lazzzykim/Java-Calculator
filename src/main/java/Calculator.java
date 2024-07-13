@@ -3,12 +3,9 @@ import java.util.Queue;
 
 public class Calculator {
     Queue<Integer> resultArr = new LinkedList<>();
-    int num1;
-    int num2;
-    char operator;
-    int result = 0;
 
     public int calculate(int num1, int num2, char operator) {
+        int result = 0;
         switch (operator) {
             case '+':
                 result = num1 + num2;
@@ -20,13 +17,14 @@ public class Calculator {
                 result = num1 * num2;
                 break;
             case '/':
-                if (num2 == 0) {
-                    System.out.println("throw exception");
-                }
-                result = num1 / num2;
-                break;
+                    if (num2 == 0) {
+                        throw new ArithmeticException("0으로 나눌 수 없습니다.");
+                    } else {
+                        result = num1 / num2;
+                        break;
+                    }
             default:
-                System.out.println("throw exception");
+                throw new IllegalArgumentException("잘못된 연산자입니다. [" + operator + "]");
         }
         return result;
     }
