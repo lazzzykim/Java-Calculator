@@ -41,6 +41,7 @@ public class Calculator {
         }
     }
 
+    //가장 먼저 데이터에 저장된 값 삭제
     public void deleteFirstResultArr() {
         resultArr.poll();
     }
