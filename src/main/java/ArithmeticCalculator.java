@@ -1,3 +1,5 @@
+import operator.*;
+
 import java.util.Queue;
 
 public class ArithmeticCalculator extends Calculator {

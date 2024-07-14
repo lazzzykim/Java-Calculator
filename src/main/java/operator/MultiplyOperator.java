@@ -1,3 +1,5 @@
+package operator;
+
 public class MultiplyOperator implements Operator {
 
     @Override

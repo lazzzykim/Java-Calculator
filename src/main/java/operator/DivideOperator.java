@@ -1,3 +1,5 @@
+package operator;
+
 public class DivideOperator implements Operator {
 
     @Override
