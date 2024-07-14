@@ -4,10 +4,13 @@ import java.util.Queue;
 public class Calculator {
 
     private final Queue<Integer> resultArr;
+    private final Queue<Double> circleResultArr;
 
     public Calculator() {
+        this.circleResultArr = new LinkedList<>();
         this.resultArr = new LinkedList<>();
     }
+
 
     public int calculate(int num1, int num2, char operator) {
         int result = 0;
@@ -34,9 +37,8 @@ public class Calculator {
         return result;
     }
 
-    public Queue<Integer> addResultArr(int num1, int num2, char operator) {
+    public void addResultArr(int num1, int num2, char operator) {
         resultArr.add(calculate(num1, num2, operator));
-        return resultArr;
     }
 
     // 저장된 결과값 출력
@@ -49,5 +51,27 @@ public class Calculator {
     //가장 먼저 데이터에 저장된 값 삭제
     public void deleteFirstResultArr() {
         resultArr.poll();
+    }
+
+    public double circleArea(double radius) {
+        if (radius < 0) {
+            throw new ArithmeticException("반지름은 0보다 커야합니다.");
+        } else {
+            return Math.PI * radius * radius;
+        }
+    }
+
+    public void addCircleAreaResultArr(double radius) {
+        circleResultArr.add(circleArea(radius));
+    }
+
+    public void deleteFirstCircleResultArr() {
+        circleResultArr.poll();
+    }
+
+    public void getCircleResultArr() {
+        for (Double value : circleResultArr) {
+            System.out.println(value);
+        }
     }
 }
