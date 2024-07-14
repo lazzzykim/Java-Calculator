@@ -18,9 +18,10 @@ public class App {
             try {
                 int result = calculator.calculate(num1, num2, operator);
                 System.out.println("결과: " + result);
-                calculator.resultArr.add(calculator.calculate(num1, num2, operator));
+                calculator.addResultArr(num1, num2, operator);
             } catch (ArithmeticException | IllegalArgumentException e) {
                 System.out.println("에러: " + e.getMessage());
+                continue;
             }
 
 
@@ -28,15 +29,13 @@ public class App {
             scanner.nextLine();
             String remove = scanner.nextLine();
             if (remove.equals("remove")) {
-                calculator.resultArr.poll();
+                calculator.deleteFirstResultArr();
             }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String getArr = scanner.nextLine();
             if (getArr.equals("inquiry")) {
-                for (Integer value : calculator.resultArr) {
-                    System.out.println(value);
-                }
+                calculator.getResultArr();
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
