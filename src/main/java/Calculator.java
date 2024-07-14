@@ -3,7 +3,11 @@ import java.util.Queue;
 
 public class Calculator {
 
-    private final Queue<Integer> resultArr = new LinkedList<>();
+    private final Queue<Integer> resultArr;
+
+    public Calculator() {
+        this.resultArr = new LinkedList<>();
+    }
 
     public int calculate(int num1, int num2, char operator) {
         int result = 0;
