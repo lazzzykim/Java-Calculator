@@ -4,7 +4,12 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(new LinkedList<>());
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(
+                new LinkedList<>(),
+                new AddOperator(),
+                new SubtractOperator(),
+                new MultiplyOperator(),
+                new DivideOperator());
         CircleCalculator circleCalculator = new CircleCalculator(new LinkedList<>());
 
         while (true) {
