@@ -1,6 +1,7 @@
-public class SubtractOperator {
+public class SubtractOperator implements Operator {
 
-    public int subtraction(int num1, int num2) {
+    @Override
+    public double calculate(int num1, int num2) {
         return num1 - num2;
     }
 }

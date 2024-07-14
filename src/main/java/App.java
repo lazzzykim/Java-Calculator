@@ -4,12 +4,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(
-                new LinkedList<>(),
-                new AddOperator(),
-                new SubtractOperator(),
-                new MultiplyOperator(),
-                new DivideOperator());
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(new LinkedList<>());
         CircleCalculator circleCalculator = new CircleCalculator(new LinkedList<>());
 
         while (true) {
@@ -29,9 +24,9 @@ public class App {
                 char operator = scanner.next().charAt(0);
 
                 try {
-                    double result = arithmeticCalculator.calculate(num1, num2, operator);
+                    double result = arithmeticCalculator.getResult(num1, num2, operator);
                     System.out.println("결과: " + result);
-                    arithmeticCalculator.results().add(arithmeticCalculator.calculate(num1, num2, operator));
+                    arithmeticCalculator.results().add(arithmeticCalculator.getResult(num1, num2, operator));
                 } catch (ArithmeticException | IllegalArgumentException e) {
                     System.out.println("에러: " + e.getMessage());
                     continue;

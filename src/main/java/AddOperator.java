@@ -1,8 +1,8 @@
-public class AddOperator{
+public class AddOperator implements Operator {
 
-    public int addition(int num1, int num2) {
+    @Override
+    public double calculate(int num1, int num2) {
         return num1 + num2;
     }
-
 }
 

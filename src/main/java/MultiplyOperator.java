@@ -1,6 +1,7 @@
-public class MultiplyOperator {
+public class MultiplyOperator implements Operator {
 
-    public int multiplication(int num1, int num2) {
+    @Override
+    public double calculate(int num1, int num2) {
         return num1 * num2;
     }
 }
