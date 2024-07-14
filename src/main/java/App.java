@@ -1,9 +1,11 @@
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Calculator calculator = new Calculator();
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(new LinkedList<>());
+        CircleCalculator circleCalculator = new CircleCalculator(new LinkedList<>());
 
         while (true) {
             System.out.println("원하는 계산의 번호를 입력하세요.");
@@ -22,9 +24,9 @@ public class App {
                 char operator = scanner.next().charAt(0);
 
                 try {
-                    int result = calculator.calculate(num1, num2, operator);
+                    double result = arithmeticCalculator.calculate(num1, num2, operator);
                     System.out.println("결과: " + result);
-                    calculator.addResultArr(num1, num2, operator);
+                    arithmeticCalculator.results().add(arithmeticCalculator.calculate(num1, num2, operator));
                 } catch (ArithmeticException | IllegalArgumentException e) {
                     System.out.println("에러: " + e.getMessage());
                     continue;
@@ -34,13 +36,13 @@ public class App {
                 scanner.nextLine();
                 String remove = scanner.nextLine();
                 if (remove.equals("remove")) {
-                    calculator.deleteFirstResultArr();
+                    arithmeticCalculator.deleteFirstResultArr();
                 }
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String getArr = scanner.nextLine();
                 if (getArr.equals("inquiry")) {
-                    calculator.getResultArr();
+                    arithmeticCalculator.getResultArr();
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
@@ -55,8 +57,8 @@ public class App {
                 double radius = scanner.nextDouble();
 
                 try {
-                    double result = calculator.circleArea(radius);
-                    calculator.addCircleAreaResultArr(radius);
+                    double result = circleCalculator.circleArea(radius);
+                    circleCalculator.results().add(circleCalculator.circleArea(radius));
                     System.out.println("결과: " + result);
                 } catch (ArithmeticException e) {
                     System.out.println("에러: " + e.getMessage());
@@ -66,13 +68,13 @@ public class App {
                 scanner.nextLine();
                 String remove = scanner.nextLine();
                 if (remove.equals("remove")) {
-                    calculator.deleteFirstCircleResultArr();
+                    circleCalculator.deleteFirstResultArr();
                 }
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String getArr = scanner.nextLine();
                 if (getArr.equals("inquiry")) {
-                    calculator.getCircleResultArr();
+                    circleCalculator.getResultArr();
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
