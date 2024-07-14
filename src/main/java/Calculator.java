@@ -35,6 +35,7 @@ public class Calculator {
         return resultArr;
     }
 
+    // 저장된 결과값 출력
     public void getResultArr() {
         for (Integer value : resultArr) {
             System.out.println(value);
